@@ -1,2 +1,44 @@
-#LIVE Site URL https://subkari.onrender.com/
-(Server may redeploy automatically depending on Render conditions)
+## ✨ Subkari — Apparel EC site
+
+This project is built using HTML, CSS, Javascript, and Python.
+
+### Overview
+This is a CtoC rental platform focused on subculture fashion.
+
+### Features
+
+Listing Feature:
+Users can create listings by filling in a predefined format and choose whether the item is available for rental or direct purchase.
+
+Rental Feature:
+Allows users to rent clothing within a specified rental period.
+
+Purchase Feature:
+Users can directly purchase items. In addition, a purchase option during the rental period is also available.
+
+Cleaning Confirmation Feature:
+Provides a function to confirm whether rented clothing has been cleaned.
+
+Order Status Tracking Feature:
+Enables management and display of the current transaction status of each item.
+
+### Purpose
+
+The platform helps users review their spending and reduce unnecessary subscriptions, while also allowing people who want to try subculture fashion to experience it before committing to a purchase.
+
+## 💻 Live Site URL
+
+https://subkari.onrender.com/
+
+(The server may automatically redeploy depending on Render’s conditions.)
+This project is deployed using Render.
+
+## 🔎 Contact Me
+
+The website includes a contact form that allows visitors to send messages directly.
+For any questions, feedback, or comments (other than bug reports), feel free to reach out through the form.
+
+
+
+
+
