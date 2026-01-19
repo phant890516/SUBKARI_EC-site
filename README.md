@@ -4,10 +4,10 @@ This project is built using HTML, CSS, Javascript, and Python.
 
 ### Features
 
-### Top Page:
+### Top Page & Listing Feature:
 <img width="1279" height="673" alt="トップページ画面" src="https://github.com/user-attachments/assets/f98c2f8f-c0ae-49d1-be05-dda2cbded91b" />
 This is a CtoC rental platform focused on subculture fashion.
-### Listing Feature:
+</br>
 Users can create listings by filling in a predefined format and choose whether the item is available for rental or direct purchase.
 
 ### Upload Products:
@@ -16,16 +16,20 @@ Users can create listings by filling in a predefined format and choose whether t
 Users can upload their products on sale or rental.
 
 ### Rental Feature:
-<img width="1280" height="673" alt="購入画面" src="https://github.com/user-attachments/assets/e23a1a23-17e7-4c67-81f5-2da11ec9369f" />
-### Allows users to rent clothing within a specified rental period.
+<img width="700" height="500" alt="購入画面" src="https://github.com/user-attachments/assets/e23a1a23-17e7-4c67-81f5-2da11ec9369f" />
+</br>
+Allows users to rent clothing within a specified rental period.
 
 ### Purchase Feature:
-<img width="1280" height="668" alt="取引管理画面" src="https://github.com/user-attachments/assets/fda9e359-d9d3-4490-b1c7-36bc70e75e15" />
+<img width="700" height="500" alt="取引管理画面" src="https://github.com/user-attachments/assets/fda9e359-d9d3-4490-b1c7-36bc70e75e15" />
+</br>
 Users can directly purchase items. In addition, a purchase option during the rental period is also available.
 
 ### Cleaning Confirmation Feature:
-<img width="1279" height="671" alt="取引詳細画面" src="https://github.com/user-attachments/assets/280808a5-cbf3-411e-9af0-ff84923bb511" />
+<img width="700" height="500" alt="取引詳細画面" src="https://github.com/user-attachments/assets/280808a5-cbf3-411e-9af0-ff84923bb511" />
+</br>
 Provides a function to confirm whether rented clothing has been cleaned.
+
 ### Order Status Tracking Feature:
 Enables management and display of the current transaction status of each item.
 
