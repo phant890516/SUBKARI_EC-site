@@ -25,12 +25,11 @@ Allows users to rent clothing within a specified rental period.
 </br>
 Users can directly purchase items. In addition, a purchase option during the rental period is also available.
 
-### Cleaning Confirmation Feature:
+### Cleaning Confirmation Feature & Order Status Tracking Feature:
 <img width="700" height="500" alt="取引詳細画面" src="https://github.com/user-attachments/assets/280808a5-cbf3-411e-9af0-ff84923bb511" />
 </br>
 Provides a function to confirm whether rented clothing has been cleaned.
-
-### Order Status Tracking Feature:
+</br>
 Enables management and display of the current transaction status of each item.
 
 ### Purpose
