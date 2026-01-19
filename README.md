@@ -12,7 +12,8 @@ Users can create listings by filling in a predefined format and choose whether t
 
 ### Upload Products:
 <img width="700" height="500" alt="出品フォマット画面" src="https://github.com/user-attachments/assets/93b90e86-42fc-450d-baa8-2348e0e4f833" />
-### Users can upload their products on sale or rental.
+</br>
+Users can upload their products on sale or rental.
 
 ### Rental Feature:
 <img width="1280" height="673" alt="購入画面" src="https://github.com/user-attachments/assets/e23a1a23-17e7-4c67-81f5-2da11ec9369f" />
