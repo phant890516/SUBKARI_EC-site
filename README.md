@@ -2,7 +2,7 @@
 
 This project is built using HTML, CSS, Javascript, and Python.
 
-### Features
+### 🔥 Features
 
 ### Top Page & Listing Feature:
 <img width="1279" height="673" alt="トップページ画面" src="https://github.com/user-attachments/assets/f98c2f8f-c0ae-49d1-be05-dda2cbded91b" />
