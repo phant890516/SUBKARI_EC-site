@@ -6,6 +6,7 @@ This project is built using HTML, CSS, Javascript, and Python.
 This is a CtoC rental platform focused on subculture fashion.
 
 ### Features
+<img width="1280" height="673" alt="出品フォマット画面" src="https://github.com/user-attachments/assets/93b90e86-42fc-450d-baa8-2348e0e4f833" />
 
 Listing Feature:
 Users can create listings by filling in a predefined format and choose whether the item is available for rental or direct purchase.
