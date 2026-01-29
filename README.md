@@ -2,6 +2,10 @@
 
 This project is built using HTML, CSS, Javascript, and Python.
 
+## Test Account
+userID:test@gmail.com
+password:12345678
+
 ## 🔥 Features
 
 ### Top Page & Listing Feature:
