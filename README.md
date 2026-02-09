@@ -2,10 +2,6 @@
 
 This project is built using HTML, CSS, Javascript, and Python.
 
-## Test Account
-userID:test@gmail.com
-password:12345678
-
 ## 🔥 Features
 
 ### Top Page & Listing Feature:
@@ -38,13 +34,6 @@ Enables management and display of the current transaction status of each item.
 
 ### Purpose
 The platform helps users review their spending and reduce unnecessary subscriptions, while also allowing people who want to try subculture fashion to experience it before committing to a purchase.
-
-## 💻 Live Site URL
-
-https://subkari.onrender.com/
-
-(The server may automatically redeploy depending on Render’s conditions.)
-This project is deployed using Render.
 
 ## 🔎 Contact Me
 
