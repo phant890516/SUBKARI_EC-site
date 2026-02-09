@@ -92,7 +92,7 @@ function deleteImage() {
     updateUI();
 }
 
-// 画像切り抜き
+// 画像ドリミング
 function editImage() {
     if (images.length === 0) return;
     
