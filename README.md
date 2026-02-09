@@ -35,12 +35,13 @@ Enables management and display of the current transaction status of each item.
 ### Purpose
 The platform helps users review their spending and reduce unnecessary subscriptions, while also allowing people who want to try subculture fashion to experience it before committing to a purchase.
 
+### Documents
+[服レンタルサービス(サブカリ)_機能定義書.pdf](https://github.com/user-attachments/files/25172422/_.pdf)
+[服レンタルサービス (サブカリ)_要件定義書.pdf](https://github.com/user-attachments/files/25172421/_.pdf)
+
 ## 🔎 Contact Me
 
 The website includes a contact form that allows visitors to send messages directly.
 For any questions, feedback, or comments (other than bug reports), feel free to reach out through the form.
-
-
-
 
 
