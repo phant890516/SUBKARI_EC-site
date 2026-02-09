@@ -17,6 +17,7 @@ Users can upload their products on sale or rental.
 
 ### Edit:
 <img width="700" height="500" alt="screencapture-subkari-onrender-seller-seller-uploadImg-2026-02-09-14_42_27" src="https://github.com/user-attachments/assets/f4016b52-135f-45ff-8b85-cb7387507381" />
+</br>
 Users can customize their product photo and also allow uploading more than one photos.
 
 ### Rental Feature:
