@@ -1,0 +1,206 @@
+/* ==========================================================================
+   header.css  —  Site header styles
+   ========================================================================== */
+
+/* Font */
+@import url('https://fonts.cdnfonts.com/css/informal-roman');
+
+
+/* --------------------------------------------------------------------------
+   Search bar
+   -------------------------------------------------------------------------- */
+.search-container {
+    padding-top: 10px;
+}
+
+.search-container input[type="search"],
+.search-container input[type="text"] {
+    width: 365px;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #555;
+    padding: 4px 0;
+}
+
+.search-container input[type="search"]::placeholder,
+.search-container input[type="text"]::placeholder {
+    color: #888;
+}
+
+.search-container input[type="search"]:focus,
+.search-container input[type="text"]:focus {
+    outline: none;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Autofill fix */
+.search-container input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #1a1a1a inset !important;
+    -webkit-text-fill-color: #fff !important;
+    caret-color: #fff;
+}
+
+.search-container input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #1a1a1a inset !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   Header shell
+   -------------------------------------------------------------------------- */
+.header-logo {
+    font-family: "Informal Roman", sans-serif;
+    font-weight: normal;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+header {
+    background-color: black;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-left {
+    margin: 0 10%;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 80px;
+    align-items: flex-end;
+}
+
+
+/* --------------------------------------------------------------------------
+   Right-side navigation (guest)
+   -------------------------------------------------------------------------- */
+.header-right-guest {
+    padding: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 33px;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------------------------------
+   Right-side navigation (member)
+   -------------------------------------------------------------------------- */
+.header-right-member {
+    padding: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 20px;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+.header-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.icon-item:hover {
+    opacity: 0.75;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+/* --------------------------------------------------------------------------
+   Sub-navigation (category links below main header)
+   -------------------------------------------------------------------------- */
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding: 8px 10%;
+    background-color: black;
+    border-top: 1px solid #333;
+}
+
+.header-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.header-nav a:hover {
+    color: #fff;
+}
+
+
+/* --------------------------------------------------------------------------
+   Login / register links (guest header)
+   -------------------------------------------------------------------------- */
+.header-login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-login a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.2s;
+}
+
+.header-login a:hover {
+    opacity: 0.75;
+}
+
+/* Search button inside form */
+.search-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 0 8px 0 0;
+    font-size: 16px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}

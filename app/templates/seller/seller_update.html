@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block title %}商品編集{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/seller_format.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="app"
+    data-edit-mode="true"
+    data-product-id="{{ product.id if product else '' }}"
+    data-product='{% if product %}{{ product | tojson }}{% else %}null{% endif %}'>
+</div>
+
+<div class="min-h-screen py-8 px-4">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow space-y-6">
+        <h1 class="text-3xl font-bold mb-8 text-center">商品を編集する</h1>
+
+        <!-- 商品画像 -->
+        <div class="border-2 border-dashed border-gray-300 rounded-lg text-center overflow-hidden">
+            <div id="imageDisplayArea" class="hidden">
+                <a href="{{ url_for('seller.seller_uploadImg') }}">
+                    <div class="relative bg-gray-200 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition" style="width: 100%; height: 300px;">
+                        <img id="displayImage" src="" alt="商品画像" class="w-full h-full object-contain">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-20 transition">
+                            <span class="text-white font-semibold opacity-0 hover:opacity-100 text-stroke text-2xl">クリックして編集</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="noImageArea" class="text-center">
+                <a href="{{ url_for('seller.seller_uploadImg') }}">
+                    <button type="button" class="h-[300px] text-gray-500 hover:text-gray-700 cursor-pointer">
+                        画像をアップロード
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- 商品名（必須） -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">
+                商品名 <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="name" name="productName" placeholder="商品名を入力" value=""
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+            <span class="text-red-500 text-sm hidden" id="productNameError">商品名は必須です</span>
+        </div>
+
+        <!-- レンタル可能・購入可能 -->
+        <div>
+            <div class="flex flex-col gap-4">
+                <label class="flex items-center">
+                    <input type="checkbox" id="rental" name="rental" value="true" class="rentalCheckbox cursor-pointer">
+                    <span class="ml-2">レンタル可能</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" id="purchase" name="purchase" value="true" class="purchaseCheckbox cursor-pointer">
+                    <span class="ml-2">購入可能</span>
+                </label>
+            </div>
+            <span class="text-red-500 text-sm hidden" id="rentalPurchaseError">レンタル可能または購入可能を選択してください</span>
+        </div>
+
+        <!-- レンタル価格（レンタル選択時に表示） -->
+        <div id="rentalPriceSection" class="hidden">
+            <label class="block text-sm font-semibold mb-2">
+                レンタル価格 <span class="text-red-500">*</span>
+            </label>
+            <div class="price-input-wrapper">
+                <input type="number" id="rentalPrice" name="rentalPrice" placeholder="0" min="0"
+                    class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+            </div>
+            <span class="text-red-500 text-sm hidden" id="rentalPriceError">レンタル価格は必須です</span>
+
+            <label class="block text-sm font-semibold mt-4 mb-2">
+                レンタル期間（日） <span class="text-red-500">*</span>
+            </label>
+            <input type="number" id="rentalPeriod" name="rentalPeriod" placeholder="7" min="1"
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+            <span class="text-red-500 text-sm hidden" id="rentalPeriodError">レンタル期間は必須です</span>
+        </div>
+
+        <!-- 購入価格（購入選択時に表示） -->
+        <div id="purchasePriceSection" class="hidden">
+            <label class="block text-sm font-semibold mb-2">
+                購入価格 <span class="text-red-500">*</span>
+            </label>
+            <div class="price-input-wrapper">
+                <input type="number" id="purchasePrice" name="purchasePrice" placeholder="0" min="0"
+                    class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+            </div>
+            <span class="text-red-500 text-sm hidden" id="purchasePriceError">購入価格は必須です</span>
+        </div>
+
+        <!-- 吸煙 -->
+        <div>
+            <label class="block text-sm font-semibold mb-3">吸煙</label>
+            <div class="flex gap-4">
+                <label class="flex items-center">
+                    <input type="radio" name="smoking" value="no" checked class="w-4 h-4">
+                    <span class="ml-2">いいえ</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" name="smoking" value="yes" class="w-4 h-4">
+                    <span class="ml-2">はい</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- 系統カラー（必須） -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">
+                系統カラー <span class="text-red-500">*</span>
+            </label>
+            <select id="color" name="color"
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+                <option value="ブラック">ブラック</option>
+                <option value="ホワイト">ホワイト</option>
+                <option value="イエロー">イエロー</option>
+                <option value="グレー">グレー</option>
+                <option value="ブラウン">ブラウン</option>
+                <option value="グリーン">グリーン</option>
+                <option value="ブルー">ブルー</option>
+                <option value="パープル">パープル</option>
+                <option value="ピンク">ピンク</option>
+                <option value="レッド">レッド</option>
+                <option value="オレンジ">オレンジ</option>
+            </select>
+            <span class="text-red-500 text-sm hidden" id="colorError">系統カラーを選択してください</span>
+        </div>
+
+        <!-- カテゴリー1（性別）（必須） -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">
+                カテゴリー（性別） <span class="text-red-500">*</span>
+            </label>
+            <select id="category1" name="category1"
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+                <option value="">選択してください</option>
+                <option value="ユニセックス">ユニセックス</option>
+                <option value="レディース">レディース</option>
+            </select>
+            <span class="text-red-500 text-sm hidden" id="category1Error">カテゴリーを選択してください</span>
+        </div>
+
+        <!-- カテゴリー2（種別）（必須） -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">
+                カテゴリー（種別） <span class="text-red-500">*</span>
+            </label>
+            <select id="category2" name="category2"
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+                <option value="">選択してください</option>
+                <option value="2">トップス</option>
+                <option value="3">ボトムス</option>
+                <option value="1">コーデ</option>
+                <option value="4">アクセサリー</option>
+            </select>
+            <span class="text-red-500 text-sm hidden" id="category2Error">カテゴリーを選択してください</span>
+        </div>
+
+        <!-- ブランド（必須） -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">
+                ブランド <span class="text-red-500">*</span>
+            </label>
+            <select id="brand" name="brand"
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+                <option value="">選択してください</option>
+                <option value="1">TRAVAS TOKYO</option>
+                <option value="2">REFLEM</option>
+                <option value="3">CIVARIZE</option>
+                <option value="4">ililil</option>
+                <option value="5">Valerie</option>
+                <option value="6">THICC PSYNYXX</option>
+                <option value="7">KINGLYMASK</option>
+                <option value="8">Amlige</option>
+                <option value="9">Meltier</option>
+                <option value="10">OY</option>
+                <option value="11">LIZ LISA</option>
+                <option value="12">Ank Rouge</option>
+                <option value="13">other</option>
+            </select>
+            <span class="text-red-500 text-sm hidden" id="brandError">ブランドを選択してください</span>
+        </div>
+
+        <!-- 商品概要説明 -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">商品概要説明</label>
+            <textarea id="explanation" name="productDescription" rows="4"
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500"></textarea>
+        </div>
+
+        <!-- サイズ・洗濯 -->
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-semibold mb-2">
+                    サイズ <span class="text-red-500">*</span>
+                </label>
+                <form method="GET" action="{{ url_for('seller.seller_size') }}">
+                    <button type="submit" onclick="saveToSessionStorage()"
+                        class="w-full px-4 py-2 border-2 border-[#9a9a9a] rounded hover:border-blue-500 cursor-pointer">
+                        <span class="text-sm text-gray-600 mt-1 block" id="sizeDisplay">
+                            {% if session.get('size_selected') %}選択済み{% else %}未選択{% endif %}
+                        </span>
+                    </button>
+                </form>
+                <span class="text-red-500 text-sm hidden" id="sizeError">サイズを選択してください</span>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">
+                    洗濯表示 <span class="text-red-500">*</span>
+                </label>
+                <a href="{{ url_for('seller.seller_clean') }}" onclick="saveToSessionStorage()">
+                    <button type="button"
+                        class="w-full px-4 py-2 border-2 border-[#9a9a9a] rounded hover:border-blue-500 cursor-pointer">
+                        <span class="text-sm text-gray-600 mt-1 block" id="washingDisplay">
+                            {% if session.get('clean_selected') %}選択済み{% else %}未選択{% endif %}
+                        </span>
+                    </button>
+                </a>
+                <span class="text-red-500 text-sm hidden" id="washingError">洗濯表示を選択してください</span>
+            </div>
+        </div>
+
+        <!-- 返却場所 -->
+        <div>
+            <label class="block text-sm font-semibold mb-2">返却場所</label>
+            <input type="text" id="returnLocation" name="returnLocation" placeholder="返却場所を入力" value=""
+                class="w-full px-4 py-2 border border-[#9a9a9a] rounded focus:outline-none focus:border-blue-500">
+            <span class="text-red-500 text-sm hidden" id="returnLocationError">返却場所は必須です</span>
+        </div>
+
+        <!-- ボタン -->
+        <input type="hidden" id="imagesData" name="images_data" value="[]">
+        <div class="flex gap-4 pt-6">
+            <button type="button" onclick="submitUpdateForm()"
+                class="flex-1 bg-gray-700 text-white font-bold py-3 rounded border border-[#9a9a9a] hover:bg-white hover:text-gray-700 transition cursor-pointer">
+                更新する
+            </button>
+            <button type="button" onclick="saveDraft()"
+                class="flex-1 bg-white text-gray-800 font-bold py-3 rounded border border-[#9a9a9a] hover:bg-gray-700 hover:text-white transition cursor-pointer">
+                下書き保存
+            </button>
+            <button type="button" onclick="backToSeller('{{ url_for('seller.seller') }}')"
+                class="flex-1 bg-white text-gray-800 font-bold py-3 rounded border border-[#9a9a9a] hover:bg-gray-700 hover:text-white transition cursor-pointer">
+                キャンセル
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/seller_format.js') }}"></script>
+{% endblock %}

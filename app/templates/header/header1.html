@@ -1,0 +1,53 @@
+<header class="fixed top-0 left-0 right-0 w-full z-50">
+    <div class="header">
+        <div class="header-left">
+            <a href="{{ url_for('top.guest_index') }}" class="header-logo">SUBKARI</a>
+            <div class="search-container">
+                <form action="/search" method="get" class="search-box">
+                    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" name="keyword" placeholder="すべてのアイテムから探す">
+                </form>
+            </div>
+        </div>
+        {% if user_id %}
+        <div class="header-right-member">
+            <div class="header-icons">
+                <a href="{{ url_for('mypage.mypage') }}" class="icon-item">
+                    <img src="{{ url_for('static', filename='img/mypage.png') }}" alt="" class="icon"><span>マイページ</span>
+                </a>
+                <a href="{{ url_for('mypage.likes') }}" class="icon-item">
+                    <img src="{{ url_for('static', filename='img/heart.png') }}" alt="" class="icon"><span>いいね</span>
+                </a>
+                <a href="{{ url_for('seller.seller') }}" class="icon-item">
+                    <img src="{{ url_for('static', filename='img/sell.png') }}" alt="" class="icon"><span>出品</span>
+                </a>
+                <a href="{{ url_for('deal.deal') }}" class="icon-item">
+                    <img src="{{ url_for('static', filename='img/deal.png') }}" alt="" class="icon"><span>取引</span>
+                </a>
+                <a href="{{ url_for('login.logout') }}" class="icon-item">
+                    <span>ログアウト</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="{{ url_for('top.category_products', category='トップス') }}">トップス</a>
+                <a href="{{ url_for('top.category_products', category='ボトムス') }}">ボトムス</a>
+                <a href="{{ url_for('top.for_products', for_value='レディース') }}">レディース</a>
+                <a href="{{ url_for('top.for_products', for_value='ユニセックス') }}">ユニセックス</a>
+            </nav>
+        </div>
+        {% else %}
+        <div class="header-right-guest">
+            <div class="header-login">
+                <a href="{{ url_for('login.show_register_user') }}">新規登録</a>
+                <a href="{{ url_for('login.login') }}">ログイン</a>
+            </div>
+            <nav class="header-nav">
+                <a href="{{ url_for('top.category_products', category='トップス') }}">トップス</a>
+                <a href="{{ url_for('top.category_products', category='ボトムス') }}">ボトムス</a>
+                <a href="{{ url_for('top.for_products', for_value='レディース') }}">レディース</a>
+                <a href="{{ url_for('top.for_products', for_value='ユニセックス') }}">ユニセックス</a>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</header>

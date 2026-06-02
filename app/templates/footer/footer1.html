@@ -1,0 +1,12 @@
+<footer class="bg-black text-gray-400 py-8 mt-16">
+    <div class="max-w-5xl mx-auto px-4">
+        <nav class="flex flex-wrap gap-4 justify-center mb-4 text-sm">
+            <a href="{{ url_for('top.about_subkari') }}" class="hover:text-white transition">はじめての方へ</a>
+            <a href="{{ url_for('mypage.helpCenter') if session.get('user_id') else url_for('login.login') }}" class="hover:text-white transition">ヘルプセンター</a>
+            <a href="{{ url_for('mypage.terms') if session.get('user_id') else url_for('login.show_terms') }}" class="hover:text-white transition">利用規約</a>
+            <a href="{{ url_for('mypage.privacyPolicy') if session.get('user_id') else url_for('login.privacy_policy') }}" class="hover:text-white transition">プライバシーポリシー</a>
+            <a href="{{ url_for('mypage.inquiry') if session.get('user_id') else url_for('login.login') }}" class="hover:text-white transition">お問い合わせ</a>
+        </nav>
+        <p class="text-center text-xs">&copy; 2025 HAL OSAKA IA・IH Team 5</p>
+    </div>
+</footer>

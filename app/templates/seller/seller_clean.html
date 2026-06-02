@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}洗濯表示{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 pb-16">
+    <h1 class="text-center text-3xl font-bold mb-8 text-gray-800">洗濯表示</h1>
+
+    <div class="bg-white rounded-lg border-2 border-gray-300 p-8 mb-8">
+        <img src="{{ url_for('static', filename='img/clean.svg') }}" alt="洗濯表示ガイド" class="w-full h-auto">
+    </div>
+
+    <form action="{{ url_for('seller.seller_clean_success') }}" method="POST">
+        <h2 class="text-lg font-bold mb-6 text-gray-800">洗濯種類を選んでください</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+            {% set fields = [
+                ('wash',     '洗濯',             ['None','190','170','160','161','150','151','140','141','142','130','131','132','110','111','100']),
+                ('bleach',   '漂白',             ['None','220','210','200']),
+                ('tumble',   'タンブル乾燥',      ['None','320','310','300']),
+                ('dry',      '自然乾燥',          ['None','440','445','430','435','420','425','410','415']),
+                ('iron',     'アイロン',          ['None','530','520','510','511','500']),
+                ('dryclean', 'ドライクリーニング', ['None','620','621','610','611','600']),
+                ('wet',      'ウェットクリーニング',['None','710','711','712','700'])
+            ] %}
+            {% for name, label, vals in fields %}
+            <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-2">{{ label }}</label>
+                <select name="{{ name }}"
+                    class="w-full px-4 py-3 border-2 border-gray-300 rounded bg-white text-gray-700 font-medium hover:border-gray-400 focus:outline-none focus:border-blue-500 cursor-pointer">
+                    {% for val in vals %}
+                    <option value="{{ val }}" {% if selected.get(name) == val %}selected{% endif %}>
+                        {{ 'なし' if val == 'None' else val }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="bg-white rounded-lg border-2 border-gray-300 p-8 mb-8">
+            <h3 class="text-lg font-bold mb-4 text-gray-800">洗濯注意事項</h3>
+            <textarea name="notes" rows="6"
+                class="w-full p-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500 resize-none text-sm"
+                placeholder="洗濯に関する注意事項を入力してください">{{ selected.get('note', '') }}</textarea>
+        </div>
+
+        <div class="flex justify-end">
+            <button type="submit"
+                class="px-8 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition font-bold cursor-pointer">
+                次へ
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

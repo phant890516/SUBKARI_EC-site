@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}セラートップ{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-100 p-5">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg">
+
+        <!-- User info row -->
+        <div class="flex items-end gap-6 pb-8 border-b border-black">
+            <div class="w-18 h-18">
+                <img src="{{ url_for('static', filename='img/cat.svg') }}" alt="プロフィール画像">
+            </div>
+            <div>
+                <h1 class="text-xl font-bold mb-2 text-[#1F1F1F]">ねこ</h1>
+                <div class="flex gap-2 text-yellow-500 text-sm tracking-wide">★★★★★</div>
+            </div>
+            <div class="flex gap-4 items-end text-gray-600">
+                <span>喫煙あり</span>
+                <span class="text-blue-500 font-semibold hover:text-blue-600 transition">
+                    <a href="{{ url_for('mypage.editProfile') }}">編集する</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- Navigation cards -->
+        <div class="flex flex-row justify-around my-8">
+
+            <a href="{{ url_for('seller.seller_draft') }}" class="block">
+                <div class="w-[250px] h-[250px] relative rounded-lg border-2 border-gray-300 hover:opacity-80 transition cursor-pointer">
+                    <img class="w-full h-full object-cover rounded" src="{{ url_for('static', filename='img/sample.png') }}" alt="下書き">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl text-stroke">下書き</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('seller.seller_products') }}" class="block">
+                <div class="w-[250px] h-[250px] relative rounded-lg border-2 border-gray-300 hover:opacity-80 transition cursor-pointer">
+                    <img class="w-full h-full object-cover rounded" src="{{ url_for('static', filename='img/sample.png') }}" alt="出品中">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl text-stroke">出品中</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ url_for('deal.deal') }}" class="block">
+                <div class="w-[250px] h-[250px] relative rounded-lg border-2 border-gray-300 hover:opacity-80 transition cursor-pointer">
+                    <img class="w-full h-full object-cover rounded" src="{{ url_for('static', filename='img/sample.png') }}" alt="取引中">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl text-stroke">取引中</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Recent listings preview -->
+        <div class="mt-10">
+            <h2 class="text-lg font-bold mb-4">出品中の商品</h2>
+            <a href="{{ url_for('seller.seller_products') }}">
+                <div class="flex flex-row items-start gap-4 p-5 bg-white border border-[#B8B8B8] rounded-lg hover:opacity-80 transition cursor-pointer">
+                    <div class="w-[265px] h-[265px] bg-gray-300 rounded overflow-hidden">
+                        <img class="w-full h-full object-cover rounded" src="{{ url_for('static', filename='img/sample.png') }}" alt="商品画像">
+                    </div>
+                    <div class="w-[167px] h-[206px] bg-gray-400 rounded overflow-hidden">
+                        <img class="w-full h-full object-cover rounded" src="{{ url_for('static', filename='img/sample.png') }}" alt="商品画像">
+                    </div>
+                    <div class="w-[148px] h-[186px] bg-gray-500 rounded overflow-hidden">
+                        <img class="w-full h-full object-cover rounded" src="{{ url_for('static', filename='img/sample.png') }}" alt="商品画像">
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="flex flex-col gap-4 mb-[200px]">
+            <div class="w-full mt-8 p-4 bg-gray-50 rounded text-sm text-gray-600">
+                <p class="font-bold text-gray-800 mb-2">※注意事項</p>
+                <p>商品の詳細や購入に関する注意事項がここに表示されます。</p>
+            </div>
+
+            <div class="flex flex-row gap-5 justify-center">
+                <a href="{{ url_for('seller.seller_format') }}" class="block">
+                    <button type="button" class="w-[338px] bg-[#837575] text-white font-bold py-4 rounded hover:bg-gray-700 transition cursor-pointer">
+                        出品する
+                    </button>
+                </a>
+                <a href="{{ url_for('seller.seller_draft') }}" class="block">
+                    <button type="button" class="w-[338px] bg-white text-[#826969] font-bold py-4 rounded border border-[#837575] hover:bg-gray-700 hover:text-white transition cursor-pointer">
+                        下書き一覧
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

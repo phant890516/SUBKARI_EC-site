@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}エラー{% endblock %}
+{% block content %}
+<div class="min-h-screen flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-6xl font-bold text-gray-800 mb-4">Oops</h1>
+    <p class="text-xl text-gray-600 mb-8">ページが見つかりませんでした。</p>
+    <a href="{{ url_for('top.guest_index') }}"
+       class="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-600 transition font-semibold">
+        トップページへ戻る
+    </a>
+</div>
+{% endblock %}
