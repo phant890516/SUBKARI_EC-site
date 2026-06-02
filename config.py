@@ -1,11 +1,11 @@
 # ==========================================================
 # Filename      : config.py
-# Descriptions  : 設定ファイル
+# Descriptions  : Configuration
 # ==========================================================
 import os
 from datetime import timedelta
 
+
 class Config:
-    # Flaskのセッション機能や特定の拡張機能で暗号化キーとして使用される
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'seucrber_tkikeays_ih28'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'subkari_default_secret_key_2025'
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=240)
